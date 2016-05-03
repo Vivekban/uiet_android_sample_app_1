@@ -24,7 +24,7 @@
             android:name="io.fabric.ApiKey"
             android:value="20e387cc2e63d0b5a92c1f207114b7a51c7ca0f8" />
 
-        <activity android:name=".PhoneAuthentication"></activity>
+        <activity android:name=".PhoneAuthentication" />
         <activity android:name=".ChatDialog"></activity>
     </application>
 
