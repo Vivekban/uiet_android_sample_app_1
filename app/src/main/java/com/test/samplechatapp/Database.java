@@ -19,9 +19,6 @@ public class Database extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     // Database Name
     private static final String DATABASE_NAME = "dbManager";
-    Tables chats = new Tables("chats");
-    Tables contact = new Tables("contact");
-    Tables dialog = new Tables("dialogs");
 
 
     public Database(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -33,20 +30,16 @@ public class Database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d("in DB Create Method", "yowijfme");
 
-        String query;
+        // Create Tables
 
-        // return contact table query
-        query = contact.createTable();
-        db.execSQL(query);
+        Contact_Table tb = Contact_Table.getInstance();
+        db.execSQL(tb.create());
 
+        Chat_Table ct = Chat_Table.getInstance();
+        db.execSQL(ct.create());
 
-        // return create chat table query
-        query = chats.createTable();
-        db.execSQL(query);
-
-        // returm dialog table query
-        query = dialog.createTable();
-        db.execSQL(query);
+        Dialog_Table dt = Dialog_Table.getInstance();
+        db.execSQL(dt.create());
 
     }
 
@@ -72,10 +65,21 @@ public class Database extends SQLiteOpenHelper {
     void insertData(Tables t, ArrayList data) {
         Log.d("Insert Data Functions", "table Working");
         SQLiteDatabase db = this.getWritableDatabase();
+
+        Contact_Table tb = Contact_Table.getInstance();
+        // Hv to Work on that
+        // db.insert(t.tablename, null, values);
+
+        Chat_Table ct = Chat_Table.getInstance();
+        db.execSQL(ct.create());
+
+        Dialog_Table dt = Dialog_Table.getInstance();
+        db.execSQL(dt.create());
+
+
         ContentValues values = new ContentValues();
 
         values = t.insertQuery(data);
-        db.insert(t.tablename, null, values);
         Log.d("Table NAme :", t.tablename);
         Log.d("Data :", String.valueOf(data));
 

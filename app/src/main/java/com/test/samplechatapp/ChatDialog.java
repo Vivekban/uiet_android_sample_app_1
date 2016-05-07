@@ -1,5 +1,6 @@
 package com.test.samplechatapp;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -25,8 +26,8 @@ public class ChatDialog extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_dialog);
-
         db.addMessage(null, null); //to invoke oncreate method of database class Create all tables
+
 
 
         message = (EditText) findViewById(R.id.message1); // message written
@@ -40,16 +41,20 @@ public class ChatDialog extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View v) {
         int id = v.getId();
+        ContentValues contentValues = new ContentValues();
         switch (id) {
 
             case R.id.send_button:
                 ArrayList data = new ArrayList();
-
                 int contact_id = 10;
                 data.add(contact_id);
                 String contact_name = "Pankaj";
                 data.add(contact_name);
+                Contact_Table tb = Contact_Table.getInstance();
+                contentValues = tb.insert(data);
+
                 //chats.insertData(data); //chats table property insert data() where data is to be insert in db
+
                 db.insertData(contact, data);
                 Toast.makeText(getApplicationContext(), contact.tablename, Toast.LENGTH_LONG).show();
 

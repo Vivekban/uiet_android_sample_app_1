@@ -12,7 +12,7 @@ public class Tables {
     String tablename;
 
     public Tables(String name) {
-        this.tablename = name;
+
     }
 
     public String createTable() {
