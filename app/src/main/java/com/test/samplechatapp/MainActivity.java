@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     Button b1;
+    Button databse;
 
 
     @Override
@@ -20,11 +21,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //hello saif
         b1=(Button)findViewById(R.id.button);
         b1.setOnClickListener(this);
+        databse = (Button) findViewById(R.id.database);
+        databse.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent i=new Intent(getApplicationContext(),PhoneAuthentication.class);
-        startActivity(i);
+        switch (v.getId()) {
+            case R.id.button:
+                Intent i = new Intent(getApplicationContext(), PhoneAuthentication.class);
+                startActivity(i);
+                break;
+            case R.id.database:
+                Intent j = new Intent(getApplicationContext(), ChatDialog.class);
+                startActivity(j);
+                break;
+        }
+
     }
 }

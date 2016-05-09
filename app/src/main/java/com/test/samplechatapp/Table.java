@@ -1,7 +1,5 @@
 package com.test.samplechatapp;
 
-import android.content.ContentValues;
-
 import java.util.ArrayList;
 
 /**
@@ -9,14 +7,19 @@ import java.util.ArrayList;
  */
 public interface Table {
 
-    public ContentValues insert(ArrayList a);
+    public void insert(String[][] s);
 
     public void delete();
 
     public void update();
 
-    public void select();
+    public ArrayList select();
 
-    public String create();
+    public void create();
+
+    public String createDatabase();
+
+    public boolean checkExistenceTable();
+
 
 }
